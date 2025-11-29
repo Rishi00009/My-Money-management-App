@@ -910,11 +910,7 @@ function App() {
     try {
       const reader = new FileReader();
       reader.onloadend = async () => {
-        const base64Data = reader.result.split(",")[1];
-        const prompt = "Analyze this receipt image. Extract the Merchant Name (as 'reason') and the Total Amount (as 'amount'). Return ONLY raw JSON in this format: { \"reason\": \"Example Store\", \"amount\": 100 }. Do not include markdown blocks.";
-        
-        // For now, simulate AI response since API key is empty
-        // In real implementation, you would call callGemini here
+        // Simulate AI response
         setTimeout(() => {
           setReason("Sample Store");
           setAmount("2500");
@@ -964,7 +960,6 @@ function App() {
   const filteredEntries = selectedYear && selectedMonth
       ? activeEntries.filter(e => e.year === selectedYear && e.month === selectedMonth && e.type === activeTab)
       : [];
-  const total = filteredEntries.reduce((sum, e) => sum + e.amount, 0);
 
   const getMonthTotals = (year, month) => {
     const monthEntries = activeEntries.filter(e => e.year === year && e.month === month);
